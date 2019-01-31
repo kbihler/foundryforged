@@ -120,6 +120,9 @@ add_action( 'widgets_init', 'foundryforged_widgets_init' );
  * Enqueue scripts and styles.
  */
 function foundryforged_scripts() {
+	// enqueue google fonts. if changed adjust sass > variables-site > _typography.scss
+  wp_enqueue_style('foundryforged-fonts', 'https://fonts.googleapis.com/css?family=Anton|Roboto+Condensed:400,700|Roboto:300,400');
+	
 	wp_enqueue_style( 'foundryforged-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'foundryforged-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
