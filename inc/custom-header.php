@@ -20,8 +20,8 @@ function foundryforged_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'foundryforged_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
+		'width'                  => 2000,
+		'height'                 => 850,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'foundryforged_header_style',
 	) ) );

@@ -111,6 +111,19 @@ if ( ! function_exists( 'foundryforged_entry_footer' ) ) :
 	}
 endif;
 
+/*
+Display category list
+*/
+
+function foundryforged_category_list() {
+				/* translators: used between list items, there is a space after the comma */
+				$categories_list = get_the_category_list( esc_html__( ', ', 'foundryforged' ) );
+				if ( $categories_list ) {
+					/* translators: 1: list of categories. */
+					printf( '<span class="cat-links">' . esc_html__( '%1$s', 'foundryforged' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				}
+}
+
 if ( ! function_exists( 'foundryforged_post_thumbnail' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
