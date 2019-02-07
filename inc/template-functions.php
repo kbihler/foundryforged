@@ -20,6 +20,7 @@ function foundryforged_body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
+		$classes[] = 'archive-view';
   }
   
   // add a class telling us if the sidebar is in use.

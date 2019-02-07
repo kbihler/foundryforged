@@ -41,6 +41,7 @@ if ( ! function_exists( 'foundryforged_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+		add_image_size( 'foundryforged-full-bleed', 2000, 1200, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -109,6 +110,16 @@ function foundryforged_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'foundryforged' ),
 		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'Add widgets here.', 'foundryforged' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Widgets', 'foundryforged' ),
+		'id'            => 'footer-1',
 		'description'   => esc_html__( 'Add widgets here.', 'foundryforged' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',

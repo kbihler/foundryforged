@@ -13,6 +13,10 @@
 
 	</div><!-- #content -->
 
+	<div class="footer-widgets">
+		<?php get_sidebar('footer'); ?>
+	</div>
+
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
 		<?php

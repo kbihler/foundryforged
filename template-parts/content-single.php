@@ -29,8 +29,8 @@
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
-
-	<?php foundryforged_post_thumbnail(); ?>
+ 
+	<?php foundryforged_post_thumbnail('foundryforged-full-bleed'); ?>
 
 <section class="post-content">
 

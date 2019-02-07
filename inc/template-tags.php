@@ -139,9 +139,9 @@ if ( ! function_exists( 'foundryforged_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail">
+			<figure class="featured-image full-bleed">
 				<?php the_post_thumbnail(); ?>
-			</div><!-- .post-thumbnail -->
+			</figure><!-- .post-thumbnail -->
 
 		<?php else : ?>
 
