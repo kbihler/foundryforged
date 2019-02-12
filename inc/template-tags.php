@@ -136,24 +136,25 @@ if ( ! function_exists( 'foundryforged_post_thumbnail' ) ) :
 			return;
 		}
 
-		if ( is_singular() ) :
-			?>
+		if ( is_singular() ) : ?>
 
 			<figure class="featured-image full-bleed">
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail('foundryforged-full-bleed'); ?>
 			</figure><!-- .post-thumbnail -->
 
 		<?php else : ?>
 
-		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-			<?php
-			the_post_thumbnail( 'post-thumbnail', array(
-				'alt' => the_title_attribute( array(
-					'echo' => false,
-				) ),
-			) );
-			?>
-		</a>
+			<figure class="featured-image index-image">
+				<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+					<?php
+					the_post_thumbnail( 'foundryforged-imdex-img', array(
+						'alt' => the_title_attribute( array(
+							'echo' => false,
+						) ),
+					) );
+					?>
+				</a>
+			</figure>
 
 		<?php
 		endif; // End is_singular().
@@ -170,3 +171,25 @@ function foundryforged_post_navigation() {
 		'prev_text' => '<span class="meta-nav" aria-hidden="true"' . __('Previous', 'foundryforged') . '</span>' . '<span class="screen-reader-text">' . __('Previous post:', 'foundryforged' ) . '</span>' . '<span class="post-title">%title</span>',
 	) );
 }
+
+
+/*
+* custom excerpt indicator
+*/
+
+function foundryforged_excerpt_more( $more ) {
+	return "...";
+}
+
+add_filter( 'excerpt_more', 'foundryforged_excerpt_more' );
+
+/*
+* Excerpt length
+*/
+
+function foundryforged_excerpt_length( $length ) {
+	return 20;
+}
+
+add_filter( 'excerpt_length', 'foundryforged_excerpt_length');
+

@@ -16,37 +16,50 @@
 
 	<?php foundryforged_post_thumbnail(); ?>
 
-	<div class="entry-content">
-		<?php
-		the_content();
+	<section class="post-content">
 
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'foundryforged' ),
-			'after'  => '</div>',
-		) );
-		?>
-	</div><!-- .entry-content -->
-
-	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
-			<?php
-			edit_post_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'foundryforged' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);
-			?>
-		</footer><!-- .entry-footer -->
+	<?php if ( ! is_active_sidebar( 'left-1' ) ) : ?>
+        <div class="post-content__wrap">
+          <div class="post-content__body">
 	<?php endif; ?>
+	
+		<div class="entry-content">
+			<?php
+			the_content();
+
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'foundryforged' ),
+				'after'  => '</div>',
+			) );
+			?>
+		</div><!-- .entry-content -->
+
+		<?php if ( get_edit_post_link() ) : ?>
+			<footer class="entry-footer">
+				<?php
+				edit_post_link(
+					sprintf(
+						wp_kses(
+							/* translators: %s: Name of current post. Only visible to screen readers */
+							__( 'Edit <span class="screen-reader-text">%s</span>', 'foundryforged' ),
+							array(
+								'span' => array(
+									'class' => array(),
+								),
+							)
+						),
+						get_the_title()
+					),
+					'<span class="edit-link">',
+					'</span>'
+				);
+				?>
+			</footer><!-- .entry-footer -->
+		<?php endif; ?>
+			<?php if ( ! is_active_sidebar( 'left-1' ) ) : ?>
+					</div><!-- end post-content__body -->
+				</div><!-- end post-content__wrapper -->
+			<?php endif; ?>
+	</section>
+	<?php get_sidebar('left'); ?>
 </article><!-- #post-<?php the_ID(); ?> -->

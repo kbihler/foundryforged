@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
 Theme Name: Foundry Forged
 Theme URI: https://github.com/kbihler/foundryforged.git
@@ -778,6 +779,39 @@ a:hover, a:active {
 	border-bottom-color: white;
 }
 
+.pagination {
+	font-family: "Roboto", sans-serif;
+}
+
+.pagination .nav-links {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: center;
+	    justify-content: center;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+	padding: .5em 1em;
+	background: white;
+}
+
+.pagination a {
+	text-decoration: none;
+}
+
+.pagination a:focus, .pagination a:hover {
+	color: white;
+	background: #e65526;
+}
+
+.pagination .current {
+	font-weight: 600;
+	color: #e65526;
+}
+
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -895,7 +929,7 @@ a:hover, a:active {
 }
 
 @media screen and (min-width: 900px) {
-	.has-sidebar .hentry {
+	.single.has-sidebar .hentry {
 		display: -ms-flexbox;
 		display: flex;
 		-ms-flex-wrap: wrap;
@@ -903,30 +937,69 @@ a:hover, a:active {
 		-ms-flex-pack: justify;
 		    justify-content: space-between;
 	}
-	.has-sidebar .hentry .entry-header {
+	.single.has-sidebar .hentry .entry-header {
 		width: 100%;
 		-ms-flex: 1 0 100%;
 		    flex: 1 0 100%;
 	}
-	.has-sidebar .hentry .post-content {
+	.single.has-sidebar .hentry .post-content {
 		width: 60%;
 	}
-	.has-sidebar .hentry .widget-area {
+	.single.has-sidebar .hentry .widget-area {
 		width: 30%;
 	}
 }
 
 @media screen and (min-width: 900px) {
-	.no-sidebar .post-content__wrap {
+	.single.no-sidebar .post-content__wrap {
 		display: -ms-flexbox;
 		display: flex;
 		-ms-flex-pack: justify;
 		    justify-content: space-between;
 	}
-	.no-sidebar .post-content__wrap .entery-meta {
+	.single.no-sidebar .post-content__wrap .entery-meta {
 		width: 70%;
 	}
-	.no-sidebar .post-content__wrap .post-content__body {
+	.single.no-sidebar .post-content__wrap .post-content__body {
+		width: 70%;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.page.has-left-sidebar .hentry {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+		-ms-flex-pack: justify;
+		    justify-content: space-between;
+		-ms-flex-direction: row-reverse;
+		    flex-direction: row-reverse;
+	}
+	.page.has-left-sidebar .hentry .entry-header {
+		width: 100%;
+		-ms-flex: 1 0 100%;
+		    flex: 1 0 100%;
+	}
+	.page.has-left-sidebar .hentry .post-content {
+		width: 60%;
+	}
+	.page.has-left-sidebar .hentry .widget-area {
+		width: 30%;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.page.no-sidebar .post-content__wrap {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-pack: justify;
+		    justify-content: space-between;
+	}
+	.page.no-sidebar .post-content__wrap .entery-meta {
+		width: 70%;
+	}
+	.page.no-sidebar .post-content__wrap .post-content__body {
 		width: 70%;
 	}
 }
@@ -1361,6 +1434,139 @@ button.dropdown-toggle {
 }
 
 /*--------------------------------------------------------------
+## Archives
+--------------------------------------------------------------*/
+.archive-view {
+	background-color: #eee;
+}
+
+.archive-view .post,
+.archive-view .page {
+	position: relative;
+	background: white;
+}
+
+.archive-view .post__content {
+	padding: 2em 2em 3em;
+}
+
+@media screen and (min-width: 900px) {
+	.archive-view.has-sidebar .site-content {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-pack: justify;
+		    justify-content: space-between;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+	}
+	.archive-view.has-sidebar .page-header {
+		width: 100%;
+		-ms-flex: 1 0 100%;
+		    flex: 1 0 100%;
+	}
+	.archive-view.has-sidebar .content-area {
+		width: 60%;
+	}
+	.archive-view.has-sidebar .widget-area {
+		width: 30%;
+	}
+}
+
+.page-header {
+	font-family: "Roboto", sans-serif;
+}
+
+.page-title {
+	margin: 0 0 .5em;
+}
+
+.archive-description {
+	margin: -1em 0 2em;
+}
+
+/* For content-none.php */
+.search .page-content,
+.error-404 .page-content {
+	margin-bottom: 2em;
+	padding: 1em 2em;
+	font-family: "Roboto", sans-serif;
+	color: white;
+	background: #e65526;
+}
+
+.search input[type="search"],
+.error-404 input[type="search"] {
+	padding: .5em;
+}
+
+.search input[type="submit"],
+.error-404 input[type="submit"] {
+	border-color: white;
+	color: white;
+}
+
+.search input[type="submit"]:focus, .search input[type="submit"]:hover,
+.error-404 input[type="submit"]:focus,
+.error-404 input[type="submit"]:hover {
+	color: black;
+}
+
+.sticky::before {
+	content: "";
+	display: block;
+	width: 2em;
+	height: 2em;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-width: 0 2em 2em 0;
+	border-color: #eee #eee white;
+	border-style: solid;
+	box-shadow: -1px 2px 2px rgba(26, 26, 26, 0.1);
+}
+
+.index-image {
+	-webkit-margin-before: 1em;
+	        margin-block-start: 1em;
+	-webkit-margin-after: 1em;
+	        margin-block-end: 1em;
+	-webkit-margin-start: -2em;
+	        margin-inline-start: -2em;
+	-webkit-margin-end: -2em;
+	        margin-inline-end: -2em;
+}
+
+.index-image img {
+	display: block;
+	margin: 0 auto;
+}
+
+.index-image a:focus > img,
+.index-image a:hover > img {
+	opacity: .8;
+}
+
+.continue-reading {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	font-family: "Roboto", sans-serif;
+}
+
+.continue-reading a {
+	display: block;
+	padding: .5em 1em;
+	font-size: 90%;
+	text-decoration: none;
+	background: #d9d9d9;
+}
+
+.continue-reading a:focus, .continue-reading a:hover {
+	color: white;
+	background: #e65526;
+}
+
+/*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
 .comments-area {
@@ -1537,6 +1743,17 @@ button.dropdown-toggle {
 	font-family: "Roboto", sans-serif;
 	color: #fff;
 	background-color: #f1f0ea;
+	text-align: center;
+}
+
+.site-footer a {
+	font-weight: 700;
+	color: white;
+	text-decoration: none;
+}
+
+.site-footer a:hover, .site-footer a:focus {
+	text-decoration: underline;
 }
 
 @media screen and (min-width: 600px) {
@@ -1545,24 +1762,63 @@ button.dropdown-toggle {
 	}
 }
 
-.menu-social-container ul {
+.site-footer__wrap {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+@media screen and (min-width: 900px) {
+	.site-footer__wrap {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-pack: justify;
+		    justify-content: space-between;
+	}
+}
+
+.site-info {
+	margin: 1em 0 1em auto;
+	-ms-flex-item-align: center;
+	    -ms-grid-row-align: center;
+	    align-self: center;
+}
+
+@media screen and (min-width: 900px) {
+	.site-info {
+		text-align: right;
+	}
+	.site-info span {
+		display: block;
+	}
+}
+
+.social-menu {
+	margin: 1em 0;
+}
+
+.social-menu ul {
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-pack: center;
 	    justify-content: center;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 	list-style-type: none;
-	margin: 0 auto;
+	margin: 0;
 	padding: 0;
 }
 
-.menu-social-container ul li a {
+.social-menu ul a {
 	display: block;
-	padding: .4em 1em;
+	padding: .5em 1em;
+	color: white;
 	text-decoration: none;
+	opacity: .6;
 }
 
-.menu-social-container ul li a:hover, .menu-social-container ul li a:focus {
+.social-menu ul a:hover, .social-menu ul a:focus {
 	text-decoration: underline;
+	opacity: 1;
 }
 
 /*--------------------------------------------------------------
@@ -1570,6 +1826,13 @@ button.dropdown-toggle {
 --------------------------------------------------------------*/
 .widget-area {
 	margin-top: 1.5em;
+}
+
+/* Footer widgets for archive pages */
+@media screen and (min-width: 900px) {
+	.archive-view.has-sidebar .footer-widgets {
+		width: 100%;
+	}
 }
 
 .widget {
@@ -1707,7 +1970,7 @@ button.dropdown-toggle {
 
 .rssSummary {
 	padding: .5em 0;
-	font-family: "Roboto Condensed", sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-size: .8em;
 	line-height: 1.4em;
 }
@@ -1961,6 +2224,63 @@ object {
 	.centered-image {
 		margin: 0 -2em;
 	}
+}
+
+/*--------------------------------------------------------------
+## svg icons
+--------------------------------------------------------------*/
+/* SVG Icons base styles */
+.icon {
+	display: inline-block;
+	fill: currentColor;
+	height: 1em;
+	position: relative;
+	/* Align more nicely with capital letters */
+	top: -0.0625em;
+	vertical-align: middle;
+	width: 1em;
+}
+
+/*--------------------------------------------------------------
+SVG Fallbacks
+--------------------------------------------------------------*/
+.svg-fallback {
+	display: none;
+}
+
+.no-svg .svg-fallback {
+	display: inline-block;
+}
+
+.no-svg .nav-links .svg-fallback {
+	padding: 0 .5em;
+	color: inherit;
+	background: inherit;
+}
+
+.no-svg .svg-fallback.icon-arrow-long-left:before {
+	content: "←";
+}
+
+.no-svg .svg-fallback.icon-arrow-long-right:before {
+	content: "→";
+}
+
+/* Social Menu fallbacks */
+.no-svg .social-menu a {
+	height: auto;
+	width: auto;
+}
+
+.no-svg .social-menu li a .screen-reader-text {
+	clip: auto;
+	font-size: 16px;
+	font-size: 1rem;
+	font-weight: 400;
+	height: auto;
+	position: relative !important;
+	/* overrides previous !important styles */
+	width: auto;
 }
 
 /*# sourceMappingURL=../foundryforged/sass/maps/style.css.map */
