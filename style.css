@@ -4,7 +4,7 @@ Theme Name: Foundry Forged
 Theme URI: https://github.com/kbihler/foundryforged.git
 Author: Kyle Bihler
 Author URI: https://www.foundryideas.com
-Description: Foundry Bootstrap Theme
+Description: Foundry Forged Bootstrap Theme. Theme is Sass-ified and includes Foundation 6 for utility styles.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -1811,7 +1811,7 @@ button.dropdown-toggle {
 .social-menu ul a {
 	display: block;
 	padding: .5em 1em;
-	color: white;
+	color: #606060;
 	text-decoration: none;
 	opacity: .6;
 }
@@ -2258,11 +2258,11 @@ SVG Fallbacks
 	background: inherit;
 }
 
-.no-svg .svg-fallback.icon-arrow-long-left:before {
+.no-svg .svg-fallback.icon-arrow-left:before {
 	content: "←";
 }
 
-.no-svg .svg-fallback.icon-arrow-long-right:before {
+.no-svg .svg-fallback.icon-arrow-right:before {
 	content: "→";
 }
 
@@ -2274,6 +2274,8 @@ SVG Fallbacks
 
 .no-svg .social-menu li a .screen-reader-text {
 	clip: auto;
+	-webkit-clip-path: none;
+	        clip-path: none;
 	font-size: 16px;
 	font-size: 1rem;
 	font-weight: 400;

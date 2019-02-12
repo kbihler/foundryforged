@@ -42,8 +42,8 @@ get_header(); ?>
 			endwhile;
 
 			the_posts_pagination( array(
-				'prev_text' => foundryforged_get_svg( array('icon' => 'arrow-left')) . __( 'Newer', 'foundryforged' ),
-				'next_text' => __( 'Older', 'foundryforged' ) . foundryforged_get_svg( array('icon' => 'arrow-right')),
+				'prev_text' => foundryforged_get_svg( array('icon' => 'arrow-left', 'fallback' => true)) . __( 'Newer', 'foundryforged' ),
+				'next_text' => __( 'Older', 'foundryforged' ) . foundryforged_get_svg( array('icon' => 'arrow-right', 'fallback' => true)),
 				'before_page_number' => '<span class="screen-reader-text">' . __( 'Page ', 'foundryforged' ) . '</span>',
 			));
 

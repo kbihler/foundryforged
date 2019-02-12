@@ -84,6 +84,9 @@ if ( ! function_exists( 'foundryforged_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+
+		/* editor style */
+		add_editor_style( array('inc/editor-styles.css', foundryforged_fonts_url()));
 	}
 endif;
 add_action( 'after_setup_theme', 'foundryforged_setup' );
