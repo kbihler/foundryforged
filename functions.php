@@ -292,16 +292,27 @@ function foundryforged_scripts() {
 	
 	wp_enqueue_style( 'foundryforged-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'foundryforged-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
+	/*
+	* below enqueues are commented out in lieu of bundle.js when using webpack for production builds. If webpack is not desiered reverse commented out enqueues.
+	*/
 
-	wp_enqueue_script( 'foundryforged-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), '20151215', true );
+	// wp_enqueue_script( 'foundryforged-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
 
+	// wp_enqueue_script( 'foundryforged-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), '20151215', true );
+
+	// wp_enqueue_script( 'foundryforged-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'bundle', get_stylesheet_directory_uri() . '/dist/bundle.js', array('jquery'), 1, false );
+
+	/*
+	* End Webpack comments
+	*/
+	
 	wp_localize_script( 'foundryforged-navigation', 'foundryforgedScreenReaderText', array(
 		'expand' => __( 'Expand child menu', 'foundryforged'),
 		'collapse' => __( 'Collapse child menu', 'foundryforged'),
 	));
 
-	wp_enqueue_script( 'foundryforged-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
