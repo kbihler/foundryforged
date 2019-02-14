@@ -9,3 +9,8 @@ import Foundation from 'foundation-sites';
 //import './lib/foundation-explicit-pieces';
 
 $(document).foundation();
+
+//Require scripts
+require('./lib/functions')
+require('./lib/navigation')
+require('./lib/skip-link-focus-fix')
