@@ -17,6 +17,7 @@
     "build:style": "node-sass sass/style.scss style.css --output-style expanded && postcss -r style.css",
     "build:rtl": "rtlcss style.css style-rtl.css",
     "start": "gulp",
+    "noserve": "gulp noserve",
     "dev": "gulp build --dev",
     "build": "gulp build --production",
     "package": "gulp package --production",

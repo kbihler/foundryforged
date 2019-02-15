@@ -41,6 +41,7 @@
 				} else {
 					the_content();
 				}
+				edit_post_link( __( '(Edit)', 'foundryforged' ), '<span class="edit-link">', '</span>' ); 
 			?>
 		</div><!-- .entry-content -->
 

@@ -254,6 +254,10 @@ gulp.task('build',
 gulp.task('default',
   gulp.series('build', server, gulp.parallel('webpack:watch', watch)));
 
+// Build the site, and watch for file changes
+gulp.task('noserve',
+  gulp.series('build', gulp.parallel('webpack:watch', watch)));
+
 // Package task
 gulp.task('package',
   gulp.series('build', archive));

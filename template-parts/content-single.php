@@ -32,7 +32,11 @@
  
 	<?php foundryforged_post_thumbnail('foundryforged-full-bleed'); ?>
 
-<section class="post-content">
+  <?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
+				<main id="main" class="main-content">
+			<?php } else { ?>
+				<main id="main" class="main-content-full-width">
+			<?php } ?>
 
   <?php if ( ! is_active_sidebar( 'sidebar-1' ) ) : ?>
         <div class="post-content__wrap">
@@ -84,7 +88,7 @@
 
         foundryforged_post_navigation();
   ?>
-</section>
+</main>
   <?php get_sidebar(); ?>
 
 </article><!-- #post-<?php the_ID(); ?> -->
