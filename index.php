@@ -12,6 +12,10 @@
  * @package foundryforged
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 get_header(); ?>
 
 <?php if ( have_posts() ) : ?>
