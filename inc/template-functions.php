@@ -32,7 +32,7 @@ function foundryforged_body_classes( $classes ) {
 	}
 	
 	if ( is_active_sidebar( 'left-1' )) {
-    $classes[] = 'has-left-sidebar';
+    $classes[] = 'sidebar-left';
   } else {
     $classes[] = 'no-sidebar';
   }

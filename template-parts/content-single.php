@@ -31,64 +31,65 @@
 	</header><!-- .entry-header -->
  
 	<?php foundryforged_post_thumbnail('foundryforged-full-bleed'); ?>
+	<div class="main-grid">
 
-  <?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
-				<main id="main" class="main-content">
-			<?php } else { ?>
-				<main id="main" class="main-content-full-width">
-			<?php } ?>
+    <?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
+      <main id="main" class="main-content">
+    <?php } else { ?>
+      <main id="main" class="main-content-full-width">
+    <?php } ?>
 
-  <?php if ( ! is_active_sidebar( 'sidebar-1' ) ) : ?>
-        <div class="post-content__wrap">
-            <div class="entry-meta">
-              <?php
-              foundryforged_posted_on();
-              foundryforged_posted_by();
-              ?>
-            </div><!-- .entry-meta -->
-          <div class="post-content__body">
-  <?php endif; ?>
+      <?php if ( ! is_active_sidebar( 'sidebar-1' ) ) : ?>
+      <div class="post-content__wrap">
+          <div class="entry-meta">
+            <?php
+            foundryforged_posted_on();
+            foundryforged_posted_by();
+            ?>
+          </div><!-- .entry-meta -->
+        <div class="post-content__body">
+      <?php endif; ?>
 
-  <div class="entry-content">
-      <?php
-      the_content( sprintf(
-        wp_kses(
-          /* translators: %s: Name of current post. Only visible to screen readers */
-          __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'foundryforged' ),
-          array(
-            'span' => array(
-              'class' => array(),
-            ),
-          )
-        ),
-        get_the_title()
-      ) );
+      <div class="entry-content">
+        <?php
+        the_content( sprintf(
+          wp_kses(
+            /* translators: %s: Name of current post. Only visible to screen readers */
+            __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'foundryforged' ),
+            array(
+              'span' => array(
+                'class' => array(),
+              ),
+            )
+          ),
+          get_the_title()
+        ) );
 
-      wp_link_pages( array(
-        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'foundryforged' ),
-        'after'  => '</div>',
-      ) );
-      ?>
-	</div><!-- .entry-content -->
+        wp_link_pages( array(
+          'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'foundryforged' ),
+          'after'  => '</div>',
+        ) );
+        ?>
+      </div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php foundryforged_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+      <footer class="entry-footer">
+        <?php foundryforged_entry_footer(); ?>
+      </footer><!-- .entry-footer -->
 
-  <?php if ( ! is_active_sidebar( 'sidebar-1' ) ) : ?>
-      </div><!-- end post-content__body -->
-    </div><!-- end post-content__wrapper -->
-  <?php endif; ?>
+      <?php if ( ! is_active_sidebar( 'sidebar-1' ) ) : ?>
+          </div><!-- end post-content__body -->
+        </div><!-- end post-content__wrapper -->
+      <?php endif; ?>
 
-  <?php 			
-  // If comments are open or we have at least one comment, load up the comment template.
+      <?php 			
+      // If comments are open or we have at least one comment, load up the comment template.
         if ( comments_open() || get_comments_number() ) :
           comments_template();
         endif;
 
         foundryforged_post_navigation();
-  ?>
-</main>
-  <?php get_sidebar(); ?>
-
+      ?>
+    </main>
+    <?php get_sidebar(); ?>
+  </div>
 </article><!-- #post-<?php the_ID(); ?> -->

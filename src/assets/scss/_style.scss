@@ -1,5 +1,6 @@
 /* 
-* Styles for typical wordpress componets Currently set to override foundation in order to change see app.js and change import order 
+* Styles for typical wordpress componets Currently set to override 
+*foundation in order to change see app.js and change import order in app.scss 
 */
 
 /*--------------------------------------------------------------
@@ -75,7 +76,7 @@
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
-// @import "site/secondary/widgets";
+@import "site/secondary/widgets";
 
 /*--------------------------------------------------------------
 # Infinite scroll
