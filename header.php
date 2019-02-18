@@ -11,7 +11,7 @@
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="no-svg">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,24 +24,31 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'foundryforged' ); ?></a>
 
+	<?php if (is_front_page()) { ?>
+		<figure class="header-img">
+			<?php the_header_image_tag(); ?>
+		</figure> <!-- header image -->
+	<?php } ?>
+
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$foundryforged_description = get_bloginfo( 'description', 'display' );
-			if ( $foundryforged_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $foundryforged_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
+			<?php the_custom_logo(); ?>
+			<div class="site-branding__text">
+				<?php if ( is_front_page() && is_home() ) :
+					?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<?php
+				else :
+					?>
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+					<?php
+				endif;
+				$foundryforged_description = get_bloginfo( 'description', 'display' );
+				if ( $foundryforged_description || is_customize_preview() ) :
+					?>
+					<p class="site-description"><?php echo $foundryforged_description; /* WPCS: xss ok. */ ?></p>
+				<?php endif; ?>
+			</div>
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
@@ -54,5 +61,4 @@
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
-
 	<div id="content" class="site-content">

@@ -111,6 +111,19 @@ if ( ! function_exists( 'foundryforged_entry_footer' ) ) :
 	}
 endif;
 
+/*
+Display category list
+*/
+
+function foundryforged_category_list() {
+				/* translators: used between list items, there is a space after the comma */
+				$categories_list = get_the_category_list( esc_html__( ', ', 'foundryforged' ) );
+				if ( $categories_list ) {
+					/* translators: 1: list of categories. */
+					printf( '<span class="cat-links">' . esc_html__( '%1$s', 'foundryforged' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				}
+}
+
 if ( ! function_exists( 'foundryforged_post_thumbnail' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
@@ -123,26 +136,60 @@ if ( ! function_exists( 'foundryforged_post_thumbnail' ) ) :
 			return;
 		}
 
-		if ( is_singular() ) :
-			?>
+		if ( is_singular() ) : ?>
 
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
-			</div><!-- .post-thumbnail -->
+			<figure class="featured-image full-width">
+				<?php the_post_thumbnail('foundryforged-full-bleed'); ?>
+			</figure><!-- .post-thumbnail -->
 
 		<?php else : ?>
 
-		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-			<?php
-			the_post_thumbnail( 'post-thumbnail', array(
-				'alt' => the_title_attribute( array(
-					'echo' => false,
-				) ),
-			) );
-			?>
-		</a>
+			<figure class="featured-image index-image">
+				<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+					<?php
+					the_post_thumbnail( 'foundryforged-imdex-img', array(
+						'alt' => the_title_attribute( array(
+							'echo' => false,
+						) ),
+					) );
+					?>
+				</a>
+			</figure>
 
 		<?php
 		endif; // End is_singular().
 	}
 endif;
+
+/*
+* post navigation for single posts
+*/
+
+function foundryforged_post_navigation() {
+	the_post_navigation( array(
+		'next_text' => '<span class="meta-nav" aria-hidden="true"' . __('Next', 'foundryforged') . '</span>' . '<span class="screen-reader-text">' . __('Next post:', 'foundryforged' ) . '</span>' . '<span class="post-title">%title</span>',
+		'prev_text' => '<span class="meta-nav" aria-hidden="true"' . __('Previous', 'foundryforged') . '</span>' . '<span class="screen-reader-text">' . __('Previous post:', 'foundryforged' ) . '</span>' . '<span class="post-title">%title</span>',
+	) );
+}
+
+
+/*
+* custom excerpt indicator
+*/
+
+function foundryforged_excerpt_more( $more ) {
+	return "...";
+}
+
+add_filter( 'excerpt_more', 'foundryforged_excerpt_more' );
+
+/*
+* Excerpt length
+*/
+
+function foundryforged_excerpt_length( $length ) {
+	return 20;
+}
+
+add_filter( 'excerpt_length', 'foundryforged_excerpt_length');
+

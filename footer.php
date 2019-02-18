@@ -1,32 +1,41 @@
 <?php
 /**
- * The template for displaying the footer
+ * The template for displaying the footer.
  *
  * Contains the closing of the #content div and all content after.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Foundry_Forged
+ * @package foundryforged
  */
 
 ?>
 
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'foundryforged' ) ); ?>">
+	<?php get_sidebar( 'footer' ); ?>
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-footer__wrap">
+			<?php
+			// Make sure there is a social menu to display.
+			if ( has_nav_menu( 'social' ) ) { ?>
+			<nav class="social-menu">
 				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'foundryforged' ), 'WordPress' );
+					wp_nav_menu( array(
+						'theme_location' => 'social',
+						'menu_class'     => 'social-links-menu',
+						'depth'          => 1,
+						'link_before'    => '<span class="screen-reader-text">',
+						'link_after'     => '</span>' . foundryforged_get_svg( array( 'icon' => 'chain' ) ),
+					) );
 				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'foundryforged' ), 'foundryforged', '<a href="https://www.foundryideas.com">Kyle Bihler</a>' );
-				?>
-		</div><!-- .site-info -->
+			</nav><!-- .social-menu -->
+			<?php } ?>
+
+			<div class="site-info">
+			</div><!-- .site-info -->
+		</div><!-- .site-footer__wrap -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
