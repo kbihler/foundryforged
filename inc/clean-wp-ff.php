@@ -48,8 +48,6 @@ if ( !function_exists( 'head_cleanup' ) ) {
 		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 		add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
 
-		// remove_all_filters('posts_orderby');
-		add_filter( 'max_srcset_image_width', create_function( '', 'return 1;' ) );
 	}
 	add_action( 'init', 'head_cleanup' );
 }
