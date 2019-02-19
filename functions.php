@@ -8,31 +8,31 @@
  */
 
 /** Clean up Wordpress head, dashboard, widgets, and amin areas. Edit as needed. */
-require get_template_directory() . '/inc/clean-wp-ff.php';
+require get_template_directory() . '/inc/clean-up.php';
 
 /** Start up Foundry Forged Theme */
-require get_template_directory() . '/inc/startup-ff.php';
+require get_template_directory() . '/inc/startup.php';
 
 /** Set globals */
-require get_template_directory() . '/inc/globals-ff.php';
+require get_template_directory() . '/inc/globals.php';
 
 /** Enqueue Scripts */
-require get_template_directory() . '/inc/enqueue-ff.php';
+require get_template_directory() . '/inc/enqueue.php';
 
 /** Set custom theme image sizes */
-require get_template_directory() . '/inc/image-sizes-ff.php';
+require get_template_directory() . '/inc/image-sizes.php';
 
 /** Register Widgets */
-require get_template_directory() . '/inc/widgets-ff.php';
+require get_template_directory() . '/inc/widgets.php';
 
 /** Custom Fonts */
-require get_template_directory() . '/inc/fonts-ff.php';
+require get_template_directory() . '/inc/fonts.php';
 
 /** Implement the Custom Header feature. */
 require get_template_directory() . '/inc/custom-header.php';
 
 /** navigation. */
-require get_template_directory() . '/inc/navigation-ff.php';
+require get_template_directory() . '/inc/navigation.php';
 require get_template_directory() . '/inc/class-foundryforged-mobile-walker.php';
 require get_template_directory() . '/inc/class-foundryforged-top-bar-walker.php';
 
