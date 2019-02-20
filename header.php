@@ -30,35 +30,54 @@
 		</figure> <!-- header image -->
 	<?php } ?>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php the_custom_logo(); ?>
-			<div class="site-branding__text">
-				<?php if ( is_front_page() && is_home() ) :
-					?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php
-				else :
-					?>
-					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-					<?php
-				endif;
-				$foundryforged_description = get_bloginfo( 'description', 'display' );
-				if ( $foundryforged_description || is_customize_preview() ) :
-					?>
-					<p class="site-description"><?php echo $foundryforged_description; /* WPCS: xss ok. */ ?></p>
-				<?php endif; ?>
-			</div>
-		</div><!-- .site-branding -->
+	<?php if ( get_theme_mod( 'wpt_mobile_menu_layout' ) === 'offcanvas' ) : ?>
+		<?php get_template_part( 'template-parts/mobile-off-canvas' ); ?>
+	<?php endif; ?>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'foundryforged' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
+	<header id="masthead" class="site-header">
+
+		<div class="site-title-bar title-bar" <?php foundryforged_title_bar_responsive_toggle(); ?>>
+			<div class="title-bar-left">
+				<?php the_custom_logo(); ?>
+			</div>
+			<div class="title-bar-right">
+				<button aria-label="<?php _e( 'Main Menu', 'foundryforged' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundryforged_mobile_menu_id(); ?>"></button>
+				<span class="site-mobile-title title-bar-title">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				</span>
+			</div>
+		</div>
+
+		<div class="site-navigation top-bar">
+			<div class="site-branding top-bar-left">
+				<?php the_custom_logo(); ?>
+				<div class="site-branding__text">
+					<?php if ( is_front_page() && is_home() ) :
+						?>
+						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+						<?php
+					else :
+						?>
+						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+						<?php
+					endif;
+					$foundryforged_description = get_bloginfo( 'description', 'display' );
+					if ( $foundryforged_description || is_customize_preview() ) :
+						?>
+						<p class="site-description"><?php echo $foundryforged_description; /* WPCS: xss ok. */ ?></p>
+					<?php endif; ?>
+				</div>
+			</div>
+			<!-- .site-branding -->
+
+			<nav class="top-bar-right" role="navigation">
+				<?php foundryforged_top_bar_r(); ?>
+
+				<?php if ( ! get_theme_mod( 'wpt_mobile_menu_layout' ) || get_theme_mod( 'wpt_mobile_menu_layout' ) === 'topbar' ) : ?>
+					<?php get_template_part( 'template-parts/mobile-top-bar' ); ?>
+				<?php endif; ?>
+			</nav>
+	<!-- #site-navigation -->
+		</div><!-- .top-bar-->
 	</header><!-- #masthead -->
 	<div id="content" class="site-content">
